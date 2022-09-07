@@ -134,7 +134,7 @@ const buscarUnProductoExterno = () => {
 buscarUnProductoExterno();
 
 
-// LIBRERIA SWEETALERT2
+// LIBRERIA SWEETALERT2 (abirlo desde VSC si no aparece en el navegador)
 
 Swal.fire({
     title: 'Bienvenido a Sea Sunglasses',
