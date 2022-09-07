@@ -1,0 +1,49 @@
+/* // VARIABLES */
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+.logo h1 {
+  color: #212529;
+  font-style: italic;
+  font-size: 3rem;
+}
+.logo img {
+  width: 20%;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 10px;
+}
+.producto h3 {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+#fetch {
+  height: 100vh;
+  overflow: hidden;
+  background-color: antiquewhite;
+}
+#fetch img {
+  padding: 1rem;
+  border-radius: 10px;
+}
+#fetch h3 {
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
+  padding-top: 3rem;
+  text-align: center;
+}
+#fetch h4 {
+  font-size: 10px;
+}
+#fetch p {
+  font-size: 12px;
+}
+#fetch #externos {
+  display: flex;
+}/*# sourceMappingURL=style2.css.map */
