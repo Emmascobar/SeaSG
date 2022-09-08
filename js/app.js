@@ -14,7 +14,7 @@ const cantidadTotal = document.getElementById('cantidadTotal')
 let carrito = []
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')){
+    if (localStorage.getItem('carrito')) {
         carrito = JSON.parse(localStorage.getItem('carrito'))
         actualizarCarrito()
     }
@@ -54,11 +54,11 @@ stockProductos.forEach((producto) => {
 const agregarAlCarrito = (prodId) => {
 
     //PARA AUMENTAR LA CANTIDAD Y QUE NO SE REPITA
-    const existe = carrito.some (prod => prod.id === prodId) //comprobar si el elemento ya existe en el carro
+    const existe = carrito.some(prod => prod.id === prodId) //comprobar si el elemento ya existe en el carro
 
-    if (existe){ //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
-        const prod = carrito.map (prod => { 
-            if (prod.id === prodId){
+    if (existe) { //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
+        const prod = carrito.map(prod => {
+            if (prod.id === prodId) {
                 prod.cantidad++
             }
         })
@@ -66,26 +66,26 @@ const agregarAlCarrito = (prodId) => {
         const item = stockProductos.find((prod) => prod.id === prodId)
         carrito.push(item)
     }
-    
-    actualizarCarrito() 
+
+    actualizarCarrito()
 
 }
 
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
 
-    const indice = carrito.indexOf(item) 
+    const indice = carrito.indexOf(item)
 
-    carrito.splice(indice, 1) 
+    carrito.splice(indice, 1)
 
-    actualizarCarrito() 
+    actualizarCarrito()
 
     console.log(carrito)
 }
 
 const actualizarCarrito = () => {
-    
-    contenedorCarrito.innerHTML = "" 
+
+    contenedorCarrito.innerHTML = ""
 
     carrito.forEach((prod) => {
         const div = document.createElement('div')
@@ -98,7 +98,7 @@ const actualizarCarrito = () => {
         `
 
         contenedorCarrito.appendChild(div)
-        
+
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
     })
@@ -107,28 +107,28 @@ const actualizarCarrito = () => {
 
     console.log(carrito)
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
-    
+
 }
 
 
 
 const buscarUnProductoExterno = () => {
-  fetch('https://api.mercadolibre.com/sites/MLA/search?q=lentes')
-    .then((response) => response.json())
-    .then(informacion => {
-      let acumulador = ``;
-      informacion.results.forEach((producto) => {
-        console.log(producto)
-        acumulador += `<div class="productoexterno">
+    fetch('https://api.mercadolibre.com/sites/MLA/search?q=lentes')
+        .then((response) => response.json())
+        .then(informacion => {
+            let acumulador = ``;
+            informacion.results.forEach((producto) => {
+                console.log(producto)
+                acumulador += `<div class="productoexterno">
           <img src=${producto.thumbnail}></img>
           <h4>${producto.title}</h4>
           <p>$${producto.price}</p>
           <button onclick="agregar(this)" id=${producto.id} class="boton-agregar-externo"> Solicitar! <i class="fas fa-star"></i></button>
         </div>`
-      })
+            })
 
-      document.getElementById('externos').innerHTML = acumulador;
-    })
+            document.getElementById('externos').innerHTML = acumulador;
+        })
 }
 
 buscarUnProductoExterno();
@@ -144,5 +144,36 @@ Swal.fire({
     imageHeight: 180,
     focusConfirm: false,
     confirmButtonText:
-      '<i class="fa fa-thumbs-up"></i> A comprar!',
-  })
+        '<i class="fa fa-thumbs-up"></i> A comprar!',
+})
+
+
+const btnAgregado = document.querySelector(".boton-agregar")
+btnAgregado.addEventListener('click', () => {
+    Toastify({
+        text: "Has agregado el producto al carrito",
+        offset: {
+            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+        style: {
+            background: "linear-gradient(to right, #3299CC, #1c80b3 )",
+        },
+    }).showToast();
+});
+
+
+const btnVaciar = document.querySelector(".boton-vaciar")
+btnVaciar.addEventListener('click', () => {
+    Toastify({
+        text: "Has eliminado todos los productos del carrito",
+        offset: {
+            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+        style: {
+            background: "linear-gradient(to right, #3299CC, #cc3732 )",
+        },
+    }).showToast();
+});
+

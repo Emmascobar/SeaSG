@@ -91,7 +91,7 @@ p {
 
 }
 
-.boton-agregar {
+.boton-agregar, .boton-vaciar {
   background-color: #3299CC;
   color: white;
   font-size: 18px;
