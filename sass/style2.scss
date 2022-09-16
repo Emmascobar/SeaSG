@@ -1,4 +1,3 @@
-
 /* // VARIABLES */
 $blue: #3299CC;
 $fuente1: 'Quicksand', sans-serif;
@@ -23,7 +22,7 @@ $cortelargo: 1024px;
     img {
         width: 18%;
     }
-}   
+}
 
 .producto {
     img {
@@ -32,7 +31,7 @@ $cortelargo: 1024px;
     }
 
     h3 {
-        font-size: 1.5rem ;
+        font-size: 1.5rem;
         padding: 0.5rem;
     }
 }
@@ -41,29 +40,38 @@ $cortelargo: 1024px;
     height: 100vh;
     overflow: hidden;
     background-color: antiquewhite;
-    
+
+
     img {
         padding: 1rem;
         border-radius: 10px;
     }
 
-    h3{
+    h3 {
         font-family: 'Lobster', cursive;
         font-size: 2rem;
         padding-top: 3rem;
         text-align: center;
     }
 
-    h4{
+    h4 {
         font-size: 10px;
     }
 
-    p{
+    p {
         font-size: 12px;
     }
 
-    #externos{
+    #externos {
         display: flex;
+        overflow: auto;
+        padding-right: 2rem;
+        padding-left: 2rem;
 
+    }
+
+    #externos::-webkit-scrollbar {
+        width: 20px;
+        height: 20%;
     }
 }

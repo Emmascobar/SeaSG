@@ -47,4 +47,11 @@
 }
 #fetch #externos {
   display: flex;
+  overflow: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+#fetch #externos::-webkit-scrollbar {
+  width: 20px;
+  height: 20%;
 }/*# sourceMappingURL=style2.css.map */
