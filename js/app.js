@@ -121,7 +121,7 @@ const buscarUnProductoExterno = () => {
                 console.log(producto)
                 acumulador += `<div class="productoexterno">
           <img src=${producto.thumbnail}></img>
-          <h4>${producto.title}</h4>
+          <h4>${producto.title}</h4> 
           <p>$${producto.price}</p>
           <button onclick="agregar(this)" id=${producto.id} class="boton-agregar-externo"> Solicitar! <i class="fas fa-star"></i></button>
         </div>`
@@ -148,19 +148,24 @@ Swal.fire({
 })
 
 
-const btnAgregado = document.querySelector(".boton-agregar")
-btnAgregado.addEventListener('click', () => {
-    Toastify({
-        text: "Has agregado el producto al carrito",
-        offset: {
-            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
-        },
-        style: {
-            background: "linear-gradient(to right, #3299CC, #1c80b3 )",
-        },
-    }).showToast();
-});
+const btnAgregado = document.getElementsByClassName("boton-agregar");
+
+for (var i = 0; i < btnAgregado.length; i++) {
+
+    btnAgregado[i].addEventListener('click', () => {
+        Toastify({
+            text: "Has agregado el producto al carrito",
+            offset: {
+                x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+            },
+            style: {
+                background: "linear-gradient(to right, #3299CC, #1c80b3 )",
+            },
+        }).showToast();
+    });
+
+}
 
 
 const btnVaciar = document.querySelector(".boton-vaciar")
